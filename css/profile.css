@@ -1,0 +1,339 @@
+/* Profile Page Styles */
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.profile-header {
+    background: var(--htb-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--htb-primary) 0%, var(--htb-accent) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--htb-darker);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.user-info h1 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-light);
+}
+
+.user-level {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.level-badge {
+    background: var(--htb-primary);
+    color: var(--htb-darker);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.level-progress {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Profile Stats */
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--htb-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    border-color: var(--htb-primary);
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.stat-icon.solved {
+    background: rgba(0, 210, 106, 0.1);
+    color: var(--htb-success);
+}
+
+.stat-icon.wanted {
+    background: rgba(255, 62, 62, 0.1);
+    color: var(--htb-danger);
+}
+
+.stat-icon.total {
+    background: rgba(159, 239, 0, 0.1);
+    color: var(--htb-primary);
+}
+
+.stat-icon.streak {
+    background: rgba(255, 138, 0, 0.1);
+    color: var(--htb-warning);
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-light);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Profile Tabs */
+.profile-tabs {
+    background: var(--htb-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-tab {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-tab.active {
+    background: var(--htb-primary);
+    color: var(--htb-darker);
+}
+
+.profile-tab:hover:not(.active) {
+    background: var(--border-color);
+    color: var(--text-light);
+}
+
+.tab-content {
+    padding: 2rem;
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Progress Charts */
+.progress-chart {
+    background: var(--htb-darker);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.chart-placeholder {
+    height: 200px;
+    background: var(--htb-card);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+}
+
+/* Certifications Progress */
+.certifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.certification-item {
+    background: var(--htb-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+}
+
+.certification-item h4 {
+    margin: 0 0 1rem 0;
+    color: var(--text-light);
+}
+
+.cert-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--htb-darker);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--htb-primary) 0%, var(--htb-success) 100%);
+    transition: width 0.3s ease;
+}
+
+.cert-progress span {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    min-width: 80px;
+    text-align: right;
+}
+
+/* Trophies Grid */
+.trophies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.trophy-item {
+    background: var(--htb-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.trophy-item.achieved {
+    border-color: var(--htb-primary);
+}
+
+.trophy-item.locked {
+    opacity: 0.6;
+}
+
+.trophy-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.trophy-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-light);
+}
+
+.trophy-item p {
+    color: var(--text-muted);
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.achieved-date,
+.progress {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.achieved-date {
+    color: var(--htb-success);
+}
+
+/* Export Button */
+.export-section {
+    text-align: center;
+    padding: 2rem;
+    background: var(--htb-card);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.export-section h3 {
+    margin: 0 0 1rem 0;
+    color: var(--text-light);
+}
+
+.export-section p {
+    color: var(--text-muted);
+    margin: 0 0 1.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .user-level {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .profile-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .tabs-header {
+        flex-direction: column;
+    }
+    
+    .trophies-grid {
+        grid-template-columns: 1fr;
+    }
+}

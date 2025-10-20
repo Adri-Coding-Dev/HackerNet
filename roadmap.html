@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackLearn - Roadmap & Certificaciones</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/roadmap.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/HackLearn.png" alt="HackLearn Logo" style="width: 70px;height: 70px;">
+                <span>HackLearn</span>
+            </div>
+            
+            <div class="nav-search">
+                <input type="text" id="search-input" placeholder="Buscar máquinas...">
+                <button id="search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="nav-actions">
+                <button id="filter-toggle" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                    Filtros
+                </button>
+                <button class="btn-secondary" data-nav="index.html">Inicio</button>
+                <!--
+                <button class="btn-secondary" data-nav="profile.html">Perfil</button>
+                -->
+                <button class="btn-secondary" data-nav="roadmap.html">Roadmap</button>
+                <button class="btn-secondary" data-nav="trophies.html">Trofeos</button>
+                <button id="logout-btn" class="btn-primary">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Roadmap Content -->
+    <main class="main-content">
+        <div class="roadmap-container">
+            <!-- Certification Selector -->
+            <div class="certification-selector">
+                <label for="certification-select">Selecciona una Certificación:</label>
+                <select id="certification-select">
+                    <option value="">Selecciona una certificación...</option>
+                    <option value="1">OSCP - Offensive Security</option>
+                    <option value="2">CEH - EC-Council</option>
+                    <option value="3">eJPT - eLearnSecurity</option>
+                </select>
+            </div>
+
+            <!-- Roadmap Container -->
+            <div id="roadmap-container">
+                <!-- Roadmap content will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Máquina (compartido con index) -->
+    <div id="machine-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-machine-name">Nombre de Máquina</h2>
+                <button id="close-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="machine-info">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Dificultad:</span>
+                            <span id="modal-difficulty" class="difficulty-badge">Media</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Sistema Operativo:</span>
+                            <span id="modal-os">Linux</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">IP:</span>
+                            <span id="modal-ip">N/A</span>
+                        </div>
+                    </div>
+                    <div class="techniques-section">
+                        <h3>Técnicas</h3>
+                        <div id="modal-techniques" class="tags-container"></div>
+                    </div>
+                    <div class="certifications-section">
+                        <h3>Certificaciones</h3>
+                        <div id="modal-certifications" class="tags-container"></div>
+                    </div>
+                    <div class="actions-section">
+                        <div class="action-buttons">
+                            <button id="mark-wanted" class="btn-secondary">Deseada</button>
+                            <button id="mark-solved" class="btn-primary">Resuelta</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="machine-content">
+                    <div class="video-section">
+                        <h3>Video de Resolución</h3>
+                        <div id="video-container" class="video-container"></div>
+                    </div>
+                    <div class="pomodoro-section">
+                        <h3>Pomodoro Timer</h3>
+                        <div class="pomodoro-container">
+                            <div class="pomodoro-display">
+                                <span id="pomodoro-timer">25:00</span>
+                            </div>
+                            <div class="pomodoro-controls">
+                                <button id="pomodoro-start" class="btn-primary">Iniciar</button>
+                                <button id="pomodoro-pause" class="btn-secondary">Pausar</button>
+                                <button id="pomodoro-reset" class="btn-secondary">Reiniciar</button>
+                            </div>
+                            <div class="pomodoro-session">
+                                <span>Sesión: <span id="pomodoro-session-type">Focus</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notes-section">
+                        <h3>Notas</h3>
+                        <div class="notes-container">
+                            <div class="notes-list" id="notes-list"></div>
+                            <div class="add-note-form">
+                                <input type="text" id="note-name" placeholder="Título de la nota">
+                                <textarea id="note-content" placeholder="Contenido de la nota"></textarea>
+                                <div class="note-timestamp">
+                                    <span>Timestamp del video: </span>
+                                    <input type="text" id="note-timestamp" placeholder="00:00">
+                                </div>
+                                <button id="add-note" class="btn-primary">Añadir Nota</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calendar-section">
+                        <h3>Planificar Resolución</h3>
+                        <div class="calendar-container">
+                            <div id="mini-calendar"></div>
+                            <button id="schedule-machine" class="btn-primary">Programar en Calendario</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/credentials.js"></script>
+    <script src="js/supabaseClient.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/roadmap.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

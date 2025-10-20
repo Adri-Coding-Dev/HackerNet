@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="32" viewBox="0 0 120 32" role="img" aria-label="HackLearn">
+  <rect width="120" height="32" rx="6" fill="#0b1220"/>
+  <g font-family="'Roboto Mono', monospace" font-size="16" font-weight="700">
+    <text x="12" y="22" fill="#9FEF00">Hack</text>
+    <text x="58" y="22" fill="#A5B1CD">Learn</text>
+  </g>
+</svg>

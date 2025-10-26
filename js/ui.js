@@ -335,7 +335,6 @@ class UIManager {
         } else {
             videoContainer.innerHTML = '<p class="no-video">No hay video de resolución disponible</p>';
         }
-
         // Inicializar Pomodoro
         if (window.pomodoroManager) {
             window.pomodoroManager.init();
@@ -616,6 +615,20 @@ class UIManager {
             if (wantedElement) wantedElement.textContent = result.data.wanted;
         }
     }
+}
+
+function filterMachines() {
+    const name = document.getElementById("searchName").value.toLowerCase();
+    const platform = document.getElementById("filterPlatform").value;
+    const os = document.getElementById("filterOS").value;
+
+    const filtered = machines.filter(m => 
+        m.name.toLowerCase().includes(name) &&
+        (platform === "" || m.platform === platform) &&
+        (os === "" || m.os === os)
+    );
+
+    displayMachines(filtered);
 }
 
 // Inicializar UI Manager

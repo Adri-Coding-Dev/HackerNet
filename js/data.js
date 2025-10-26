@@ -1,8 +1,33 @@
 // Gestión de datos con Supabase
 const DEMO_MACHINES = [
-    {id: 1, name: 'Injection', difficulty: 'Muy Fácil', ip: '10.88.0.2', os: 'Linux', techniques: ['SSH','SQLi','DockerLabs'], certifications: ['OSCP'], tags: ['Beginner','SSH'], video: 'NmDQvmCgkv8' },
-    {id: 2, name: 'ICA_1', difficulty: 'Fácil', ip: '192.168.1.152', os: 'Linux', techniques: ['MYSQL','Hydra', 'VulnHub'], certifications: ['OSCP'], tags: ['Beginner','SSH'], video: ''}
+  {
+    id: 1,
+    name: 'Injection',
+    difficulty: 'Muy Fácil',
+    ip: '10.88.0.2',
+    os: 'Linux',
+    techniques: ['SSH','SQLi','DockerLabs'],
+    certifications: ['OSCP'],
+    tags: ['Beginner','SSH'],
+    video: 'NmDQvmCgkv8',
+    download_ova: '',
+    download_docker: 'https://mega.nz/file/rZlAERjY#152uP-zS7pTC0hbPaZB7aO6_puij633u4pW-jpMuctk'
+  },
+  {
+    id: 2,
+    name: 'ICA_1',
+    difficulty: 'Fácil',
+    ip: '192.168.1.152',
+    os: 'Linux',
+    techniques: ['MYSQL','Hydra', 'VulnHub'],
+    certifications: ['OSCP'],
+    tags: ['Beginner','SSH'],
+    video: '',
+    download_ova: '',
+    download_docker: ''
+  }
 ];
+
 // Expose for other modules that need name->id mapping
 try { window.DEMO_MACHINES = DEMO_MACHINES; } catch (e) {}
 class DataManager {

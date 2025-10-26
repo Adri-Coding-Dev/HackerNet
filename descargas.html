@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HackLearn - Trofeos y Logros</title>
+    <title>HackLearn - Descargas</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/trophies.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/downloads.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -45,22 +46,37 @@
             </div>
         </div>
     </nav>
+    <div class="filters">
+        <input type="text" id="searchName" placeholder="Buscar por nombre..." onkeyup="filterMachines()">
+        <select id="filterPlatform" onchange="filterMachines()">
+            <option value="">Todas las plataformas</option>
+            <option value="HTB">HTB</option>
+            <option value="TryHackMe">TryHackMe</option>
+            <option value="VulnHub">VulnHub</option>
+            <option value="DockerLabs">DockerLabs</option>
+        </select>
+        <select id="filterOS" onchange="filterMachines()">
+            <option value="">Todos los SO</option>
+            <option value="Linux">Linux</option>
+            <option value="Windows">Windows</option>
+        </select>
+    </div>    
+    <div class="container" id="machineContainer">
+        <!-- Máquinas se agregan aquí dinámicamente -->
+    </div>
 
-    <!-- Trophies Content -->
-    <main class="main-content">
-        <div class="trophies-container" id="trophies-container">
-            <!-- Trophies content will be populated by JavaScript -->
-        </div>
-    </main>
+<script src="js/downloads.js"></script>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/credentials.js"></script>
-    <script src="js/supabaseClient.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/trophies.js"></script>
-    <script src="js/main.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/credentials.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/pomodoro.js"></script>
+<script src="js/notes.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -368,3 +368,30 @@
         padding: 1rem;
     }
 }
+
+.month-label {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.calendar-grid {
+  margin-top: 10px;
+}
+
+.calendar-cell {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.calendar-cell:hover {
+  background: #f1f5f9;
+}
+
+.calendar-header-cell {
+  background: #f3f4f6;
+  border-radius: 4px;
+  padding: 5px;
+}

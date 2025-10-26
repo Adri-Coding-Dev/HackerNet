@@ -321,6 +321,29 @@ class CalendarManager {
         `;
 
         calendarElement.innerHTML = html;
+         // ===============================
+// NAVEGACIÓN ENTRE MESES
+// ===============================
+const prevDayBtn = document.getElementById('prev-day');
+const nextDayBtn = document.getElementById('next-day');
+
+// Control de mes actual
+let currentMonth = new Date();
+
+// Listeners de navegación
+if (prevDayBtn) {
+    prevDayBtn.addEventListener('click', () => {
+        currentMonth.setMonth(currentMonth.getMonth() - 1);
+        renderFullCalendar(currentMonth);
+    });
+}
+
+if (nextDayBtn) {
+    nextDayBtn.addEventListener('click', () => {
+        currentMonth.setMonth(currentMonth.getMonth() + 1);
+        renderFullCalendar(currentMonth);
+    });
+}
 
         // Add event listeners
         this.addCalendarEventListeners();
@@ -541,6 +564,105 @@ class CalendarManager {
         return [headers, ...rows].map(row => row.join(',')).join('\n');
     }
 }
+// ===============================
+// CALENDARIO FUNCIONAL MENSUAL
+// ===============================
+
+// Contenedor del calendario
+const calendarContainer = document.getElementById('full-calendar');
+const monthLabel = document.createElement('h2');
+monthLabel.classList.add('month-label');
+
+// Estado del mes actual
+let currentMonth = new Date();
+
+// Función para renderizar el calendario completo
+function renderFullCalendar(date) {
+    if (!calendarContainer) return;
+
+    // Limpiar contenido anterior
+    calendarContainer.innerHTML = '';
+    calendarContainer.appendChild(monthLabel);
+
+    // Calcular datos del mes
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const firstDayIndex = firstDay.getDay(); // 0 = domingo
+    const totalDays = lastDay.getDate();
+
+    // Mostrar mes/año actual
+    monthLabel.textContent = `${date.toLocaleString('es-ES', { month: 'long' }).toUpperCase()} ${year}`;
+
+    // Crear cuadrícula
+    const grid = document.createElement('div');
+    grid.classList.add('calendar-grid');
+    grid.style.display = 'grid';
+    grid.style.gridTemplateColumns = 'repeat(7, 1fr)';
+    grid.style.gap = '6px';
+
+    // Nombres de los días
+    const daysOfWeek = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+    daysOfWeek.forEach(day => {
+        const header = document.createElement('div');
+        header.textContent = day;
+        header.classList.add('calendar-header-cell');
+        header.style.fontWeight = '600';
+        header.style.textAlign = 'center';
+        grid.appendChild(header);
+    });
+
+    // Días vacíos antes del inicio del mes
+    const blanks = (firstDayIndex === 0 ? 6 : firstDayIndex - 1);
+    for (let i = 0; i < blanks; i++) {
+        const empty = document.createElement('div');
+        empty.classList.add('calendar-empty');
+        grid.appendChild(empty);
+    }
+
+    // Días del mes
+    for (let day = 1; day <= totalDays; day++) {
+        const cell = document.createElement('div');
+        cell.classList.add('calendar-cell');
+        cell.textContent = day;
+        cell.style.textAlign = 'center';
+        cell.style.padding = '8px 0';
+        cell.style.borderRadius = '6px';
+        cell.style.cursor = 'pointer';
+        cell.style.transition = '0.2s';
+
+        cell.addEventListener('mouseenter', () => cell.style.background = '#f0f0f0');
+        cell.addEventListener('mouseleave', () => cell.style.background = '');
+
+        grid.appendChild(cell);
+    }
+
+    calendarContainer.appendChild(grid);
+}
+
+// Render inicial
+renderFullCalendar(currentMonth);
+
+// Botones de navegación
+const prevBtn = document.getElementById('prev-day');
+const nextBtn = document.getElementById('next-day');
+
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        currentMonth.setMonth(currentMonth.getMonth() - 1);
+        renderFullCalendar(currentMonth);
+    });
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        currentMonth.setMonth(currentMonth.getMonth() + 1);
+        renderFullCalendar(currentMonth);
+    });
+}
+
 
 // Initialize Calendar Manager
 window.calendarManager = new CalendarManager();
